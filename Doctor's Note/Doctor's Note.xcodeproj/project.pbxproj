@@ -19,6 +19,7 @@
 		DA5368881F039D950007EC5D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5368871F039D950007EC5D /* MainViewController.swift */; };
 		DAC9B22E1F03B81C0023B3BA /* ic_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC9B22C1F03B81C0023B3BA /* ic_menu@3x.png */; };
 		DAC9B22F1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9B22D1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift */; };
+		DAC9B2331F04C5330023B3BA /* DoctorsNoteNotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9B2321F04C5330023B3BA /* DoctorsNoteNotificationNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		DA5368871F039D950007EC5D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DAC9B22C1F03B81C0023B3BA /* ic_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menu@3x.png"; sourceTree = "<group>"; };
 		DAC9B22D1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuTransitionAnimation.swift; sourceTree = "<group>"; };
+		DAC9B2321F04C5330023B3BA /* DoctorsNoteNotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorsNoteNotificationNames.swift; sourceTree = "<group>"; };
 		EFDE0BBAFC6A2384F30E4725 /* Pods-Doctor's Note.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doctor's Note.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doctor's Note/Pods-Doctor's Note.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 		DA5368561F02F3FE0007EC5D /* Doctor's Note */ = {
 			isa = PBXGroup;
 			children = (
+				DAC9B2301F04C4D20023B3BA /* Common */,
 				DA0D1E9C1F03B53200EC707B /* Menu */,
 				DA5368831F03823F0007EC5D /* Login */,
 				DA5368801F0382190007EC5D /* Main */,
@@ -202,6 +205,22 @@
 				DAC9B22D1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift */,
 			);
 			name = GuillotineMenu;
+			sourceTree = "<group>";
+		};
+		DAC9B2301F04C4D20023B3BA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DAC9B2311F04C4DD0023B3BA /* Extensions */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		DAC9B2311F04C4DD0023B3BA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DAC9B2321F04C5330023B3BA /* DoctorsNoteNotificationNames.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +351,7 @@
 				DA0D1E9E1F03B53E00EC707B /* MenuViewController.swift in Sources */,
 				DAC9B22F1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift in Sources */,
 				DA53687F1F0382120007EC5D /* Networking.swift in Sources */,
+				DAC9B2331F04C5330023B3BA /* DoctorsNoteNotificationNames.swift in Sources */,
 				DA53685C1F02F3FE0007EC5D /* LoginViewController.swift in Sources */,
 				DA5368581F02F3FE0007EC5D /* AppDelegate.swift in Sources */,
 				DA5368881F039D950007EC5D /* MainViewController.swift in Sources */,

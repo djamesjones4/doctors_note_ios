@@ -12,17 +12,34 @@ class MainViewController: UIViewController {
 
     fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        // Send web token for serverside validation
+        // Check to see who is logged in and send correct data
+        
+    }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupObservers()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    fileprivate func setupObservers() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: .loginSuccess, object: nil)
+        
     }
     
+    @objc fileprivate func loadData(notification: Notification) {
+        
+        // make the network call to load table data
+        
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -34,6 +51,11 @@ class MainViewController: UIViewController {
     }
     */
 
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension MainViewController: UIViewControllerTransitioningDelegate {

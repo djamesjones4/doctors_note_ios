@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yj3-cK-Dwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="479"/>
+            <point key="canvasLocation" x="1157" y="431"/>
         </scene>
         <!--Data View Controller-->
         <scene sceneID="snT-py-3hH">
@@ -128,7 +128,7 @@
                     <navigationItem key="navigationItem" title="Doctors Note" id="rFd-ZB-02a">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="0I1-wv-MK5">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="N0q-Cn-RIt">
-                                <rect key="frame" x="16" y="7" width="16" height="22"/>
+                                <rect key="frame" x="16" y="11" width="16" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ic_menu.png">
                                     <color key="titleShadowColor" red="0.50196078431372548" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

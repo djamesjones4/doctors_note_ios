@@ -16,3 +16,5 @@ struct Controllers {
     static let login = "loginViewController"
     static let main = "main"
 }
+
+Notification.Name

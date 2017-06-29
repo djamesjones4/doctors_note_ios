@@ -10,6 +10,8 @@ import UIKit
 
 class Networking: NSObject {
     
+    private override init() {}
+    
     class func doLogin(user: String, pass: String, completion: @escaping (_ response: HTTPURLResponse, _ error: NSError?) -> ()) {
         
         if user.isEmpty || pass.isEmpty {
@@ -58,6 +60,9 @@ class Networking: NSObject {
                     preferences.synchronize()
                     
                     DispatchQueue.main.async () {
+                        // Send login success notification
+                        NotificationCenter.default.post(name: .loginSuccess, object: nil)
+                        
                         if let response = response as? HTTPURLResponse {
                             completion(response, error as NSError?)
                         }
@@ -71,4 +76,13 @@ class Networking: NSObject {
         task.resume()
     }
 
+    class func loadPersonData() {
+     // gets clients of practitioner
+        
+    }
+    
+    class func getNotes() {
+        // gets individual note data when a practitioner clicks on a client
+        
+    }
 }
