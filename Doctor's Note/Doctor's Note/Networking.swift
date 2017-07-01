@@ -10,6 +10,8 @@ import UIKit
 
 class Networking: NSObject {
     
+    static var sessionToken: String? = nil
+    
     private override init() {}
     
     class func doLogin(user: String, pass: String, completion: @escaping (_ data : Data, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
@@ -49,14 +51,13 @@ class Networking: NSObject {
                 return
             }
             
-            
-            guard let server_response = json as? NSDictionary else
-            {
+            guard let server_response = json as? NSDictionary else {
                 return
             }
             
-            if let token = server_response["token"] as? String
-            {
+            if let token = server_response["token"] as? String {
+                sessionToken = token
+                
                 let preferences = UserDefaults.standard
                 preferences.set(token, forKey: "session")
                 preferences.synchronize()
@@ -92,15 +93,64 @@ class Networking: NSObject {
         task.resume()
     }
 
-    class func loadPersonData(token: String, completion: @escaping (_ data : Data, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
+    class func loadPersonData(completion: @escaping (_ data : NSDictionary?, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
         // gets clients of practitioner and practitioners of clients
-        let url = URL(string: "https://doctors-note.herokuapp.com/api/signIn")
-
-        
+        if sessionToken != nil {
+            
+            let url = URL(string: "https://doctors-note.herokuapp.com/api/persons")
+            let session = URLSession.shared
+            let request = NSMutableURLRequest(url: url!)
+            request.httpMethod = "POST"
+            
+            let dictionary = [ "token" : sessionToken ]
+            print(dictionary)
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+                        
+            do{
+            request.httpBody = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+            }
+            catch {
+                print(dictionary)
+                return
+            }
+            
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {
+                (data, response, error) in
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                guard let _:Data = data else { return }
+                
+                let json:Any?
+                
+                do {
+                    json = try JSONSerialization.jsonObject(with: data!, options: [])
+                }
+                catch {
+                    return
+                }
+                
+                guard let server_response = json as? NSDictionary else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    if let response = response as? HTTPURLResponse {
+                        completion(server_response, response, error as NSError?)
+                    }
+                }
+            })
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            task.resume()
+        } else {
+            // TODO: handle error - need to log in before
+            print("session token is nil")
+        }
     }
     
     class func getNotes() {
-        // gets individual note data when a practitioner clicks on a client
+        // TODO: get individual note data when a practitioner clicks on a client
         
     }
 }

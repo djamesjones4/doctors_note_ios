@@ -11,10 +11,11 @@ import UIKit
 class MainViewController: UIViewController {
     
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var barButton: UIButton!
     
-
     fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
+    fileprivate var model = MainDataModel()
     
     override func viewDidLoad() {
         
@@ -22,6 +23,7 @@ class MainViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         setupObservers()
+        model.delegate = self
         
         navigationController?.navigationBar.barTintColor = UIColor.orange
     }
@@ -29,8 +31,6 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        // Send web token for serverside validation
-        // Check to see who is logged in and send correct data
         
     }
 
@@ -43,6 +43,7 @@ class MainViewController: UIViewController {
     @objc fileprivate func loadData(notification: Notification) {
         
         // make the network call to load table data
+        model.loadData()
         print("loading data")
         
     }
@@ -74,6 +75,18 @@ class MainViewController: UIViewController {
     deinit {
         
         NotificationCenter.default.removeObserver(self)
+    }
+}
+
+extension MainViewController: mainModelDelegate {
+    
+    func loadDataSucceded() {
+        
+        tableView.reloadData()
+    }
+    
+    func loadDataFailed() {
+        
     }
 }
 
