@@ -12,22 +12,26 @@ class Networking: NSObject {
     
     private override init() {}
     
-    class func doLogin(user: String, pass: String, completion: @escaping (_ response: HTTPURLResponse, _ error: NSError?) -> ()) {
+    class func doLogin(user: String, pass: String, completion: @escaping (_ data : Data, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
         
         if user.isEmpty || pass.isEmpty {
+            // message: must enter username and password
             return
         }
         
-        let url = URL(string: "http://www.kaleidosblog.com/tutorial/login/api/login")
+        let url = URL(string: "https://doctors-note.herokuapp.com/api/signIn")
         let session = URLSession.shared
         
         let request = NSMutableURLRequest(url: url!)
+        
         request.httpMethod = "POST"
         
-        let paramToSend = "username=" + user + "&password=" + pass
-        
-        request.httpBody = paramToSend.data(using: String.Encoding.utf8)
-        
+        let dictionary = ["username": user, "password": pass]
+
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+
+        request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary)
         let task = session.dataTask(with: request as URLRequest, completionHandler: {
             (data, response, error) in
             
@@ -51,24 +55,36 @@ class Networking: NSObject {
                 return
             }
             
-            if let data_block = server_response["data"] as? NSDictionary
+            if let token = server_response["token"] as? String
             {
-                if let session_data = data_block["session"] as? String
-                {
-                    let preferences = UserDefaults.standard
-                    preferences.set(session_data, forKey: "session")
-                    preferences.synchronize()
+                let preferences = UserDefaults.standard
+                preferences.set(token, forKey: "session")
+                preferences.synchronize()
+                
+                DispatchQueue.main.async () {
+                    // Send login success notification
+                    NotificationCenter.default.post(name: .loginSuccess, object: nil)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    // Send login failure notification
+                    var infoDict : [String : Any]? = nil
+                    if let errorMsg = server_response["error"] as? String {
+                        infoDict = ["message" : errorMsg]
+                    }
                     
-                    DispatchQueue.main.async () {
-                        // Send login success notification
-                        NotificationCenter.default.post(name: .loginSuccess, object: nil)
-                        
-                        if let response = response as? HTTPURLResponse {
-                            completion(response, error as NSError?)
-                        }
+                    NotificationCenter.default.post(name: .loginFailure, object: infoDict)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                if let response = response as? HTTPURLResponse {
+                    if let data = data {
+                        completion(data, response, error as NSError?)
                     }
                 }
             }
+            
             
         })
         
@@ -76,8 +92,10 @@ class Networking: NSObject {
         task.resume()
     }
 
-    class func loadPersonData() {
-     // gets clients of practitioner
+    class func loadPersonData(token: String, completion: @escaping (_ data : Data, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
+        // gets clients of practitioner and practitioners of clients
+        let url = URL(string: "https://doctors-note.herokuapp.com/api/signIn")
+
         
     }
     

@@ -9,8 +9,22 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    
+    @IBOutlet weak var barButton: UIButton!
+    
 
     fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        setupObservers()
+        
+        navigationController?.navigationBar.barTintColor = UIColor.orange
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -18,14 +32,6 @@ class MainViewController: UIViewController {
         // Send web token for serverside validation
         // Check to see who is logged in and send correct data
         
-    }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        setupObservers()
     }
 
     fileprivate func setupObservers() {
@@ -37,9 +43,22 @@ class MainViewController: UIViewController {
     @objc fileprivate func loadData(notification: Notification) {
         
         // make the network call to load table data
-        
+        print("loading data")
         
     }
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        
+        let menuViewController = storyboard!.instantiateViewController(withIdentifier: Controllers.menu)
+        menuViewController.modalPresentationStyle = .custom
+        menuViewController.transitioningDelegate = self
+        
+        presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
+        presentationAnimator.supportView = navigationController!.navigationBar
+        presentationAnimator.presentButton = sender as? UIView
+        present(menuViewController, animated: true, completion: nil)
+    }
+    
 
     /*
     // MARK: - Navigation

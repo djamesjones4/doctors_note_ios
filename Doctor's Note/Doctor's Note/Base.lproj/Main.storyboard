@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.63240202889999997" blue="0.30768130319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yj3-cK-Dwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -107,6 +107,11 @@
                             <constraint firstItem="deg-wg-wDr" firstAttribute="top" secondItem="Fxd-k7-Uf6" secondAttribute="bottom" constant="37" id="urh-RV-ZUJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="deg-wg-wDr" id="bdX-rI-8R8"/>
+                        <outlet property="passwordField" destination="Fxd-k7-Uf6" id="Hwj-IQ-zCX"/>
+                        <outlet property="usernameField" destination="KTB-dc-abg" id="Hal-uU-CYc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,7 +126,7 @@
                         <viewControllerLayoutGuide type="bottom" id="XTu-dQ-Z9Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jjn-KB-tPk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -133,9 +138,15 @@
                                 <state key="normal" image="ic_menu.png">
                                     <color key="titleShadowColor" red="0.50196078431372548" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="menuButtonTapped:" destination="lbd-CU-7cD" eventType="touchUpInside" id="qIT-mW-KT6"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="barButton" destination="N0q-Cn-RIt" id="cfX-gw-Lxv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCj-gs-VEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,9 +157,10 @@
             <objects>
                 <navigationController storyboardIdentifier="mainNav" automaticallyAdjustsScrollViewInsets="NO" id="6nl-pD-mgu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AvF-F4-a8N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="AvF-F4-a8N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="0.63240202889999997" blue="0.30768130319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

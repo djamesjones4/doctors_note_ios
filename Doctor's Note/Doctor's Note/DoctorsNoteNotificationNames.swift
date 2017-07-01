@@ -12,4 +12,5 @@ extension Notification.Name {
     
     // MARK: - Networking
     static let loginSuccess = Notification.Name("loginSuccess")
+    static let loginFailure = Notification.Name("loginFailure")
 }

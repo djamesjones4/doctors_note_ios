@@ -30,7 +30,7 @@ class MenuViewController: UIViewController, GuillotineMenu {
             label.numberOfLines = 1;
             label.text = "Doctors Note"
             label.font = UIFont.boldSystemFont(ofSize: 17)
-            label.textColor = UIColor.white
+            label.textColor = UIColor.blue
             label.sizeToFit()
             return label
         }()
@@ -53,7 +53,15 @@ class MenuViewController: UIViewController, GuillotineMenu {
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
-        presentingViewController!.dismiss(animated: true, completion: nil)
+        presentingViewController!.dismiss(animated: true, completion: {
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: Storyboards.main, bundle: nil)
+                let login = storyboard.instantiateViewController(withIdentifier: Controllers.login)
+                
+                let root = UIApplication.shared.keyWindow?.rootViewController
+                root?.present(login, animated: true, completion: nil)
+            }
+        })
     }
 }
 
