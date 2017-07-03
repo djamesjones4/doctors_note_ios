@@ -58,7 +58,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create cell inside this function which will contain the below
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "CellTitle") {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") {
             let firstName = model.personData?[indexPath.row]["lastname"] as? String ?? ""
             let lastName = model.personData?[indexPath.section]["firstname"] as? String ?? ""
             

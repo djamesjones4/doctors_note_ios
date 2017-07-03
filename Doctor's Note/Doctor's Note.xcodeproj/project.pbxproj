@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B071177FBEE74B0237A66A6 /* Pods_Doctor_s_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3669ACDA7E40B63ACB64F8 /* Pods_Doctor_s_Note.framework */; };
+		D3CD2BC71F09F5E90053D7DF /* MainDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD2BC61F09F5E90053D7DF /* MainDataModel.swift */; };
 		DA0D1E9E1F03B53E00EC707B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D1E9D1F03B53E00EC707B /* MenuViewController.swift */; };
 		DA5368581F02F3FE0007EC5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5368571F02F3FE0007EC5D /* AppDelegate.swift */; };
 		DA53685C1F02F3FE0007EC5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53685B1F02F3FE0007EC5D /* LoginViewController.swift */; };
@@ -28,6 +29,7 @@
 		AE59524E11904FE2E1563546 /* Pods-Doctor's Note.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doctor's Note.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doctor's Note/Pods-Doctor's Note.release.xcconfig"; sourceTree = "<group>"; };
 		AF3669ACDA7E40B63ACB64F8 /* Pods_Doctor_s_Note.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doctor_s_Note.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0959F50EE728FF8C0698D91 /* Pods_Doctor_s_NoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doctor_s_NoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3CD2BC61F09F5E90053D7DF /* MainDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDataModel.swift; sourceTree = "<group>"; };
 		DA0D1E9D1F03B53E00EC707B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		DA5368541F02F3FE0007EC5D /* Doctor's Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Doctor's Note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5368571F02F3FE0007EC5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 				D0959F50EE728FF8C0698D91 /* Pods_Doctor_s_NoteTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3CD2BC51F09F5D20053D7DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D3CD2BC61F09F5E90053D7DF /* MainDataModel.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		DA0D1E9C1F03B53200EC707B /* Menu */ = {
@@ -145,6 +155,7 @@
 		DA5368801F0382190007EC5D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				D3CD2BC51F09F5D20053D7DF /* Models */,
 				DA5368821F03822F0007EC5D /* Controllers */,
 				DA5368811F0382250007EC5D /* Views */,
 			);
@@ -258,6 +269,7 @@
 				TargetAttributes = {
 					DA5368531F02F3FE0007EC5D = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = P83FA3TCNP;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -347,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CD2BC71F09F5E90053D7DF /* MainDataModel.swift in Sources */,
 				DA53687C1F037F4B0007EC5D /* Constants.swift in Sources */,
 				DA0D1E9E1F03B53E00EC707B /* MenuViewController.swift in Sources */,
 				DAC9B22F1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift in Sources */,
@@ -480,6 +493,7 @@
 			baseConfigurationReference = EFDE0BBAFC6A2384F30E4725 /* Pods-Doctor's Note.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P83FA3TCNP;
 				INFOPLIST_FILE = "Doctor's Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "djamesjones4.Doctor-s-Note";
@@ -494,6 +508,7 @@
 			baseConfigurationReference = AE59524E11904FE2E1563546 /* Pods-Doctor's Note.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P83FA3TCNP;
 				INFOPLIST_FILE = "Doctor's Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "djamesjones4.Doctor-s-Note";
