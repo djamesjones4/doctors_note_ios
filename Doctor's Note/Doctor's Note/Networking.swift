@@ -57,7 +57,7 @@ class Networking: NSObject {
             
             if let token = server_response["token"] as? String {
                 sessionToken = token
-                
+                    
                 let preferences = UserDefaults.standard
                 preferences.set(token, forKey: "session")
                 preferences.synchronize()
