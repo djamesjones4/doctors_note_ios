@@ -21,7 +21,7 @@ class Networking: NSObject {
             return
         }
         
-        let url = URL(string: "https://doctors-note.herokuapp.com/api/signIn")
+        let url = URL(string: "http://localhost:3000/api/signIn")
         let session = URLSession.shared
         
         let request = NSMutableURLRequest(url: url!)
@@ -93,22 +93,20 @@ class Networking: NSObject {
         task.resume()
     }
 
-    class func loadPersonData(completion: @escaping (_ data : NSDictionary?, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
+    class func loadPersonData(completion: @escaping (_ data : [NSDictionary]?, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
         // gets clients of practitioner and practitioners of clients
         if sessionToken != nil {
             
-            let url = URL(string: "https://doctors-note.herokuapp.com/api/persons")
+            let url = URL(string: "http://localhost:3000/api/persons")
             let session = URLSession.shared
             let request = NSMutableURLRequest(url: url!)
-            request.httpMethod = "POST"
-            
             let dictionary = [ "token" : sessionToken ]
             print(dictionary)
+            request.httpMethod = "POST"            
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
-                        
-            do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: dictionary, options: [])
             }
             catch {
                 print(dictionary)
@@ -130,7 +128,7 @@ class Networking: NSObject {
                     return
                 }
                 
-                guard let server_response = json as? NSDictionary else {
+                guard let server_response = json as? [NSDictionary] else {
                     return
                 }
                 

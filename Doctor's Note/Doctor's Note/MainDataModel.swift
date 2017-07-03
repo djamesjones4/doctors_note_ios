@@ -16,7 +16,7 @@ protocol mainModelDelegate: class {
 
 class MainDataModel {
     
-    var personData: [String : Any]? = nil
+    var personData: [[String : Any]]? = nil
     weak var delegate: mainModelDelegate? = nil
     
     func loadData() {
@@ -27,9 +27,13 @@ class MainDataModel {
                 self.delegate?.loadDataFailed()
             } else {
                 if let data = data {
-                    self.personData = data as? [String : Any]
-                    self.delegate?.loadDataSucceded()
-                    print("persondata: ", self.personData)
+                    self.personData = data as? [[String : Any]]
+                    for dict in self.personData! {
+                        let personid = dict["id"]
+                    print("personID: \(personid):", dict)
+                        print("person for table: ", self.personData?[0]["firstname"] as? String, self.personData?[0]["lastname"] as? String)
+                        self.delegate?.loadDataSucceded()
+                    }
                 } else {
                     self.delegate?.loadDataFailed()
                 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +20,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         // Do any additional setup after loading the view.
         setupObservers()
@@ -45,6 +47,34 @@ class MainViewController: UIViewController {
         // make the network call to load table data
         model.loadData()
         print("loading data")
+        
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+       return model.personData?.count ?? 0
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return  1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // create cell inside this function which will contain the below
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CellTitle") {
+            let firstName = model.personData?[indexPath.row]["lastname"] as? String ?? ""
+            let lastName = model.personData?[indexPath.section]["firstname"] as? String ?? ""
+            
+            let cellText = firstName + " " + lastName
+            
+            cell.textLabel?.text = cellText
+            print(model.personData?[indexPath.section]["firstname"] as Any)
+            // return UITableViewCell
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+        
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // TODO: push new controller on to navigation stack
         
     }
     
