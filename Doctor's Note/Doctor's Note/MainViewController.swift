@@ -53,9 +53,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func numberOfSections(in tableView: UITableView) -> Int {
        return model.personData?.count ?? 0
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       return  1
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create cell inside this function which will contain the below
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") {
@@ -71,12 +73,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             return UITableViewCell()
         }
-        
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        // TODO: push new controller on to navigation stack
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        let alert = UIAlertController(title: "Selected Row", message: "Yay!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
+
     
     @IBAction func menuButtonTapped(_ sender: Any) {
         

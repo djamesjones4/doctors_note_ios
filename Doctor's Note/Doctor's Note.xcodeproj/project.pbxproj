@@ -180,7 +180,6 @@
 		DA5368831F03823F0007EC5D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				DA53685B1F02F3FE0007EC5D /* LoginViewController.swift */,
 				DA5368841F0382450007EC5D /* Models */,
 				DA5368851F03824C0007EC5D /* Views */,
 				DA5368861F0382510007EC5D /* Controllers */,
@@ -205,6 +204,7 @@
 		DA5368861F0382510007EC5D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DA53685B1F02F3FE0007EC5D /* LoginViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
