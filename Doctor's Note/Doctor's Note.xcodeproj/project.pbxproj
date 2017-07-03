@@ -269,7 +269,7 @@
 				TargetAttributes = {
 					DA5368531F02F3FE0007EC5D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = P83FA3TCNP;
+						DevelopmentTeam = VN3Z42Q39C;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -493,7 +493,7 @@
 			baseConfigurationReference = EFDE0BBAFC6A2384F30E4725 /* Pods-Doctor's Note.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P83FA3TCNP;
+				DEVELOPMENT_TEAM = VN3Z42Q39C;
 				INFOPLIST_FILE = "Doctor's Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "djamesjones4.Doctor-s-Note";
@@ -508,7 +508,7 @@
 			baseConfigurationReference = AE59524E11904FE2E1563546 /* Pods-Doctor's Note.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P83FA3TCNP;
+				DEVELOPMENT_TEAM = VN3Z42Q39C;
 				INFOPLIST_FILE = "Doctor's Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "djamesjones4.Doctor-s-Note";
