@@ -21,7 +21,7 @@ class Networking: NSObject {
             return
         }
         
-        let url = URL(string: "https://doctors-note.herokuapp.com/api/signIn")
+        let url = URL(string: networkingURLs.signIn)
         let session = URLSession.shared
         
         let request = NSMutableURLRequest(url: url!)
@@ -102,7 +102,7 @@ class Networking: NSObject {
         // gets clients of practitioner and practitioners of clients
         if sessionToken != nil {
             
-            let url = URL(string: "https://doctors-note.herokuapp.com/api/persons")
+            let url = URL(string: networkingURLs.getPeople)
             let session = URLSession.shared
             let request = NSMutableURLRequest(url: url!)
             let dictionary = [ "token" : sessionToken ]
@@ -156,7 +156,7 @@ class Networking: NSObject {
         // get individual note data when a practitioner clicks on a client
         if sessionToken != nil {
             
-            let url = URL(string: "https://doctors-note.herokuapp.com/api/notes")
+            let url = URL(string: networkingURLs.getNotes)
             let session = URLSession.shared
             let request = NSMutableURLRequest(url: url!)
             let dictionary = [ "token" : sessionToken!, "requestedPersonID": requestedPersonID ] as [String : Any]
@@ -207,12 +207,12 @@ class Networking: NSObject {
     class func updateNote(noteId: Int, noteContent: String, completion: @escaping (_ data: [NSDictionary]?, _ response: HTTPURLResponse, _ error: NSError?) -> ()){
         if sessionToken != nil {
             
-            let url = URL(string: "https://doctors-note.herokuapp.com/api/notes/update")
+            let url = URL(string: networkingURLs.updateNotes)
             let session = URLSession.shared
             let request = NSMutableURLRequest(url: url!)
             let dictionary = [ "token" : sessionToken!, "noteId": noteId, "noteContent": noteContent] as [String : Any]
             print(dictionary)
-            request.httpMethod = "POST"
+            request.httpMethod = "PATCH"
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
             do {
