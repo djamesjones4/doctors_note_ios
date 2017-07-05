@@ -18,6 +18,7 @@
 		DA53687C1F037F4B0007EC5D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53687B1F037F4B0007EC5D /* Constants.swift */; };
 		DA53687F1F0382120007EC5D /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53687E1F0382120007EC5D /* Networking.swift */; };
 		DA5368881F039D950007EC5D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5368871F039D950007EC5D /* MainViewController.swift */; };
+		DA8731191F0D460D00605C43 /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8731181F0D460D00605C43 /* NewNoteViewController.swift */; };
 		DAB955B61F0AD222000D915C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB955B51F0AD222000D915C /* NotesViewController.swift */; };
 		DAB955B81F0B5C01000D915C /* NotesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB955B71F0B5C01000D915C /* NotesDataModel.swift */; };
 		DAB955BE1F0C478D000D915C /* SingleNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB955BD1F0C478D000D915C /* SingleNoteViewController.swift */; };
@@ -47,6 +48,7 @@
 		DA53687B1F037F4B0007EC5D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA53687E1F0382120007EC5D /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		DA5368871F039D950007EC5D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		DA8731181F0D460D00605C43 /* NewNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
 		DAB955B51F0AD222000D915C /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		DAB955B71F0B5C01000D915C /* NotesDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesDataModel.swift; sourceTree = "<group>"; };
 		DAB955BD1F0C478D000D915C /* SingleNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleNoteViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		DA5368561F02F3FE0007EC5D /* Doctor's Note */ = {
 			isa = PBXGroup;
 			children = (
+				DA8731121F0D459D00605C43 /* NewNote */,
 				DAB955B91F0C42B1000D915C /* SingleNote */,
 				DAB955B11F0AD1BD000D915C /* Notes */,
 				DAC9B2301F04C4D20023B3BA /* Common */,
@@ -217,6 +220,38 @@
 				DA53685B1F02F3FE0007EC5D /* LoginViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DA8731121F0D459D00605C43 /* NewNote */ = {
+			isa = PBXGroup;
+			children = (
+				DA8731151F0D45BC00605C43 /* Models */,
+				DA8731141F0D45B200605C43 /* Views */,
+				DA8731131F0D45AB00605C43 /* Controllers */,
+			);
+			name = NewNote;
+			sourceTree = "<group>";
+		};
+		DA8731131F0D45AB00605C43 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA8731181F0D460D00605C43 /* NewNoteViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DA8731141F0D45B200605C43 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DA8731151F0D45BC00605C43 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		DAB955B11F0AD1BD000D915C /* Notes */ = {
@@ -444,6 +479,7 @@
 				DA53687F1F0382120007EC5D /* Networking.swift in Sources */,
 				DAC9B2331F04C5330023B3BA /* DoctorsNoteNotificationNames.swift in Sources */,
 				DAB955B61F0AD222000D915C /* NotesViewController.swift in Sources */,
+				DA8731191F0D460D00605C43 /* NewNoteViewController.swift in Sources */,
 				DA53685C1F02F3FE0007EC5D /* LoginViewController.swift in Sources */,
 				DA5368581F02F3FE0007EC5D /* AppDelegate.swift in Sources */,
 				DAB955B81F0B5C01000D915C /* NotesDataModel.swift in Sources */,

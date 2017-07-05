@@ -17,6 +17,7 @@ struct Controllers {
     static let main = "main"
     static let menu = "menuController"
     static let singleNote = "singleNote"
+    static let newNote = "newNote"
 }
 
 struct UserDefaultsKeys {

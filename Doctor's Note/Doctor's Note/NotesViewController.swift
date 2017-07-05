@@ -11,6 +11,7 @@ import UIKit
 class NotesViewController: UIViewController {
 
     @IBOutlet weak var NotesTableView: UITableView!
+    @IBOutlet weak var newNoteButton: UIButton!
     
     fileprivate let model = NotesDataModel()
     fileprivate var selectedNote: [String: Any] = [:]
@@ -23,7 +24,7 @@ class NotesViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
+   override func viewDidLoad() {
         
         super.viewDidLoad()
 
@@ -35,8 +36,19 @@ class NotesViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        NotesTableView.reloadData()
+    }
 
+    @IBAction func newNoteButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: Storyboards.main, bundle: nil)
+        if let nextView = storyboard.instantiateViewController(withIdentifier: Controllers.newNote) as? NewNoteViewController {
+            navigationController?.pushViewController(nextView, animated: true)
+        }
+        
+    }
 }
+ 
 
 extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
     

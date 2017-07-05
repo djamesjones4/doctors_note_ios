@@ -117,6 +117,41 @@
             </objects>
             <point key="canvasLocation" x="2183" y="431"/>
         </scene>
+        <!--NewNoteViewController-->
+        <scene sceneID="ypB-Bh-ghW">
+            <objects>
+                <viewController storyboardIdentifier="newNote" title="NewNoteViewController" id="vt9-Ma-aMN" customClass="NewNoteViewController" customModule="Doctor_s_Note" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="at3-j7-KOz"/>
+                        <viewControllerLayoutGuide type="bottom" id="00f-6F-aFb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gni-Hc-3lp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-7g-DCE">
+                                <rect key="frame" x="57" y="28" width="260" height="207"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SBp-7g-DCE" firstAttribute="top" secondItem="at3-j7-KOz" secondAttribute="bottom" constant="8" id="2QN-sd-lt9"/>
+                            <constraint firstItem="SBp-7g-DCE" firstAttribute="centerX" secondItem="Gni-Hc-3lp" secondAttribute="centerX" id="CHK-Et-7MU"/>
+                            <constraint firstItem="00f-6F-aFb" firstAttribute="top" secondItem="SBp-7g-DCE" secondAttribute="bottom" constant="432" id="YcU-4l-pel"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="newNoteTextView" destination="SBp-7g-DCE" id="27P-cI-FLA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZWP-Zm-xCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2976.8000000000002" y="429.53523238380814"/>
+        </scene>
         <!--Doctors Note-->
         <scene sceneID="JFN-z9-Gww">
             <objects>
@@ -204,8 +239,8 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="de3-H0-uqB">
-                                <rect key="frame" x="-0.5" y="0.0" width="375" height="603"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="de3-H0-uqB">
+                                <rect key="frame" x="-1" y="0.0" width="375" height="333"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="JI9-UH-4ss" style="IBUITableViewCellStyleDefault" id="XuA-tx-aVt">
@@ -231,29 +266,38 @@
                                     <outlet property="delegate" destination="3iZ-Db-iFb" id="q2L-ex-pmH"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHz-BR-tH4">
+                                <rect key="frame" x="153" y="388" width="68" height="30"/>
+                                <state key="normal" title="New Note"/>
+                                <connections>
+                                    <action selector="newNoteButton:" destination="3iZ-Db-iFb" eventType="touchUpInside" id="vZR-Zg-KU1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GJb-d0-fXe" firstAttribute="top" secondItem="de3-H0-uqB" secondAttribute="bottom" constant="270" id="Ea5-Rk-Ai7"/>
                             <constraint firstItem="de3-H0-uqB" firstAttribute="top" secondItem="hKM-xM-07k" secondAttribute="bottom" id="FWE-xl-bvn"/>
                             <constraint firstItem="de3-H0-uqB" firstAttribute="centerX" secondItem="l5b-yM-VYH" secondAttribute="centerX" id="Fe2-1b-i4N"/>
+                            <constraint firstItem="pHz-BR-tH4" firstAttribute="centerX" secondItem="l5b-yM-VYH" secondAttribute="centerX" id="hK9-4F-OXF"/>
                             <constraint firstItem="de3-H0-uqB" firstAttribute="width" secondItem="l5b-yM-VYH" secondAttribute="width" id="s2n-Rq-bOW"/>
-                            <constraint firstItem="de3-H0-uqB" firstAttribute="height" secondItem="l5b-yM-VYH" secondAttribute="height" id="x1i-Av-o2g"/>
+                            <constraint firstItem="pHz-BR-tH4" firstAttribute="top" secondItem="de3-H0-uqB" secondAttribute="bottom" constant="55" id="yZf-tE-JJ2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notes" id="bMg-Cj-f9Q"/>
                     <connections>
                         <outlet property="NotesTableView" destination="de3-H0-uqB" id="IUS-PI-oDu"/>
-                        <segue destination="7GD-gh-UKH" kind="presentation" identifier="toSingleNote" id="wS6-m3-JkR"/>
+                        <outlet property="newNoteButton" destination="pHz-BR-tH4" id="P1q-B2-jDW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="noc-6E-t4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2979.375" y="-258.80281690140845"/>
+            <point key="canvasLocation" x="2978.4000000000001" y="-259.52023988005999"/>
         </scene>
-        <!--SingleNoteViewController-->
+        <!--Single Note View Controller-->
         <scene sceneID="NCt-dD-pGY">
             <objects>
-                <viewController storyboardIdentifier="singleNote" title="SingleNoteViewController" id="7GD-gh-UKH" customClass="SingleNoteViewController" customModule="Doctor_s_Note" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="singleNote" id="7GD-gh-UKH" customClass="SingleNoteViewController" customModule="Doctor_s_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AZS-Fh-krm"/>
                         <viewControllerLayoutGuide type="bottom" id="XGJ-Tg-tAO"/>
