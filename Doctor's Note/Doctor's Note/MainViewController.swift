@@ -16,7 +16,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
     fileprivate var model = MainDataModel()
-    
+    fileprivate var selectedPersonId: Int = 0
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -51,19 +51,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-       return model.personData?.count ?? 0
+        return  1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return  1
+      
+      return model.personData?.count ?? 0
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create cell inside this function which will contain the below
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") {
             cell.accessoryType = .disclosureIndicator
-            let firstName = model.personData?[indexPath.row]["lastname"] as? String ?? ""
-            let lastName = model.personData?[indexPath.section]["firstname"] as? String ?? ""
+            let firstName = model.personData?[indexPath.row]["firstname"] as? String ?? ""
+            let lastName = model.personData?[indexPath.row]["lastname"] as? String ?? ""
             
             let cellText = firstName + " " + lastName
             
@@ -80,10 +82,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.deselectRow(at: indexPath, animated: false)
         
-        let alert = UIAlertController(title: "Selected Row", message: "Yay!", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
+        let isPractitioner = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isPractitioner)
+        
+        if let id = model.personData?[indexPath.row]["id"] as? Int {
+            selectedPersonId = id
+            performSegue(withIdentifier: SegueIdentifiers.toNotes, sender: nil)
+        }
     }
 
     
@@ -100,15 +104,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == SegueIdentifiers.toNotes {
+            // Get the new view controller using segue.destinationViewController.
+            if let nextView = segue.destination as? NotesViewController {
+                // Pass the selected object to the new view controller.
+                nextView.requestedPersonID = selectedPersonId
+            }
+        }
     }
-    */
+    
 
     
     deinit {

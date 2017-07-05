@@ -21,7 +21,7 @@ class Networking: NSObject {
             return
         }
         
-        let url = URL(string: "http://localhost:3000/api/signIn")
+        let url = URL(string: "https://doctors-note.herokuapp.com/api/signIn")
         let session = URLSession.shared
         
         let request = NSMutableURLRequest(url: url!)
@@ -59,7 +59,12 @@ class Networking: NSObject {
                 sessionToken = token
                     
                 let preferences = UserDefaults.standard
-                preferences.set(token, forKey: "session")
+                let id = server_response["personId"] as? Int
+                let isPractitioner = server_response["ispractitioner"] as? Bool
+                
+                preferences.set(token, forKey: UserDefaultsKeys.token)
+                preferences.set(id, forKey: UserDefaultsKeys.id)
+                preferences.set(isPractitioner, forKey: UserDefaultsKeys.isPractitioner)
                 preferences.synchronize()
                 
                 DispatchQueue.main.async () {
@@ -97,7 +102,7 @@ class Networking: NSObject {
         // gets clients of practitioner and practitioners of clients
         if sessionToken != nil {
             
-            let url = URL(string: "http://localhost:3000/api/persons")
+            let url = URL(string: "https://doctors-note.herokuapp.com/api/persons")
             let session = URLSession.shared
             let request = NSMutableURLRequest(url: url!)
             let dictionary = [ "token" : sessionToken ]
@@ -147,8 +152,106 @@ class Networking: NSObject {
         }
     }
     
-    class func getNotes() {
-        // TODO: get individual note data when a practitioner clicks on a client
-        
+    class func getNotes(requestedPersonID: Int, completion: @escaping (_ data : [NSDictionary]?, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
+        // get individual note data when a practitioner clicks on a client
+        if sessionToken != nil {
+            
+            let url = URL(string: "https://doctors-note.herokuapp.com/api/notes")
+            let session = URLSession.shared
+            let request = NSMutableURLRequest(url: url!)
+            let dictionary = [ "token" : sessionToken!, "requestedPersonID": requestedPersonID ] as [String : Any]
+            print(dictionary)
+            request.httpMethod = "POST"
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+            }
+            catch {
+                print(dictionary)
+                return
+            }
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {
+                (data, response, error) in
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                guard let _:Data = data else { return }
+                
+                let json:Any?
+                
+                do {
+                    json = try JSONSerialization.jsonObject(with: data!, options: [])
+                }
+                catch {
+                    return
+                }
+                
+                guard let server_response = json as? [NSDictionary] else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    if let response = response as? HTTPURLResponse {
+                        completion(server_response, response, error as NSError?)
+                    }
+                }
+            })
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        task.resume()
+    } else {
+    // TODO: handle error - need to log in before
+    print("session token is nil")
+    }
+}
+
+    class func updateNote(noteId: Int, noteContent: String, completion: @escaping (_ data: [NSDictionary]?, _ response: HTTPURLResponse, _ error: NSError?) -> ()){
+        if sessionToken != nil {
+            
+            let url = URL(string: "https://doctors-note.herokuapp.com/api/notes/update")
+            let session = URLSession.shared
+            let request = NSMutableURLRequest(url: url!)
+            let dictionary = [ "token" : sessionToken!, "noteId": noteId, "noteContent": noteContent] as [String : Any]
+            print(dictionary)
+            request.httpMethod = "POST"
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+            }
+            catch {
+                print(dictionary)
+                return
+            }
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {
+                (data, response, error) in
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                guard let _:Data = data else { return }
+                
+                let json:Any?
+                
+                do {
+                    json = try JSONSerialization.jsonObject(with: data!, options: [])
+                }
+                catch {
+                    return
+                }
+                
+                guard let server_response = json as? [NSDictionary] else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    if let response = response as? HTTPURLResponse {
+                        completion(server_response, response, error as NSError?)
+                    }
+                }
+            })
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            task.resume()
+        } else {
+            // TODO: handle error - need to log in before
+            print("session token is nil")
+        }
     }
 }

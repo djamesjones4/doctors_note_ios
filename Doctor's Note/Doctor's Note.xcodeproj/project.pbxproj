@@ -18,6 +18,10 @@
 		DA53687C1F037F4B0007EC5D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53687B1F037F4B0007EC5D /* Constants.swift */; };
 		DA53687F1F0382120007EC5D /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53687E1F0382120007EC5D /* Networking.swift */; };
 		DA5368881F039D950007EC5D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5368871F039D950007EC5D /* MainViewController.swift */; };
+		DAB955B61F0AD222000D915C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB955B51F0AD222000D915C /* NotesViewController.swift */; };
+		DAB955B81F0B5C01000D915C /* NotesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB955B71F0B5C01000D915C /* NotesDataModel.swift */; };
+		DAB955BE1F0C478D000D915C /* SingleNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB955BD1F0C478D000D915C /* SingleNoteViewController.swift */; };
+		DAB955C01F0C4894000D915C /* SingleNoteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB955BF1F0C4894000D915C /* SingleNoteDataModel.swift */; };
 		DAC9B22E1F03B81C0023B3BA /* ic_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC9B22C1F03B81C0023B3BA /* ic_menu@3x.png */; };
 		DAC9B22F1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9B22D1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift */; };
 		DAC9B2331F04C5330023B3BA /* DoctorsNoteNotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9B2321F04C5330023B3BA /* DoctorsNoteNotificationNames.swift */; };
@@ -43,6 +47,10 @@
 		DA53687B1F037F4B0007EC5D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA53687E1F0382120007EC5D /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		DA5368871F039D950007EC5D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		DAB955B51F0AD222000D915C /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		DAB955B71F0B5C01000D915C /* NotesDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesDataModel.swift; sourceTree = "<group>"; };
+		DAB955BD1F0C478D000D915C /* SingleNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleNoteViewController.swift; sourceTree = "<group>"; };
+		DAB955BF1F0C4894000D915C /* SingleNoteDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleNoteDataModel.swift; sourceTree = "<group>"; };
 		DAC9B22C1F03B81C0023B3BA /* ic_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menu@3x.png"; sourceTree = "<group>"; };
 		DAC9B22D1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuTransitionAnimation.swift; sourceTree = "<group>"; };
 		DAC9B2321F04C5330023B3BA /* DoctorsNoteNotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorsNoteNotificationNames.swift; sourceTree = "<group>"; };
@@ -120,6 +128,8 @@
 		DA5368561F02F3FE0007EC5D /* Doctor's Note */ = {
 			isa = PBXGroup;
 			children = (
+				DAB955B91F0C42B1000D915C /* SingleNote */,
+				DAB955B11F0AD1BD000D915C /* Notes */,
 				DAC9B2301F04C4D20023B3BA /* Common */,
 				DA0D1E9C1F03B53200EC707B /* Menu */,
 				DA5368831F03823F0007EC5D /* Login */,
@@ -209,6 +219,72 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		DAB955B11F0AD1BD000D915C /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				DAB955B21F0AD1E1000D915C /* Models */,
+				DAB955B41F0AD1F2000D915C /* Views */,
+				DAB955B31F0AD1E8000D915C /* Controllers */,
+			);
+			name = Notes;
+			sourceTree = "<group>";
+		};
+		DAB955B21F0AD1E1000D915C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DAB955B71F0B5C01000D915C /* NotesDataModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DAB955B31F0AD1E8000D915C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DAB955B51F0AD222000D915C /* NotesViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DAB955B41F0AD1F2000D915C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DAB955B91F0C42B1000D915C /* SingleNote */ = {
+			isa = PBXGroup;
+			children = (
+				DAB955BC1F0C42DA000D915C /* Models */,
+				DAB955BB1F0C42D4000D915C /* Views */,
+				DAB955BA1F0C42C5000D915C /* Controllers */,
+			);
+			name = SingleNote;
+			sourceTree = "<group>";
+		};
+		DAB955BA1F0C42C5000D915C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DAB955BD1F0C478D000D915C /* SingleNoteViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DAB955BB1F0C42D4000D915C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DAB955BC1F0C42DA000D915C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DAB955BF1F0C4894000D915C /* SingleNoteDataModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		DAC9B22B1F03B8030023B3BA /* GuillotineMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,7 +345,7 @@
 				TargetAttributes = {
 					DA5368531F02F3FE0007EC5D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = VN3Z42Q39C;
+						DevelopmentTeam = P83FA3TCNP;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -359,14 +435,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAB955C01F0C4894000D915C /* SingleNoteDataModel.swift in Sources */,
+				DAB955BE1F0C478D000D915C /* SingleNoteViewController.swift in Sources */,
 				D3CD2BC71F09F5E90053D7DF /* MainDataModel.swift in Sources */,
 				DA53687C1F037F4B0007EC5D /* Constants.swift in Sources */,
 				DA0D1E9E1F03B53E00EC707B /* MenuViewController.swift in Sources */,
 				DAC9B22F1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift in Sources */,
 				DA53687F1F0382120007EC5D /* Networking.swift in Sources */,
 				DAC9B2331F04C5330023B3BA /* DoctorsNoteNotificationNames.swift in Sources */,
+				DAB955B61F0AD222000D915C /* NotesViewController.swift in Sources */,
 				DA53685C1F02F3FE0007EC5D /* LoginViewController.swift in Sources */,
 				DA5368581F02F3FE0007EC5D /* AppDelegate.swift in Sources */,
+				DAB955B81F0B5C01000D915C /* NotesDataModel.swift in Sources */,
 				DA5368881F039D950007EC5D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,7 +573,7 @@
 			baseConfigurationReference = EFDE0BBAFC6A2384F30E4725 /* Pods-Doctor's Note.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VN3Z42Q39C;
+				DEVELOPMENT_TEAM = P83FA3TCNP;
 				INFOPLIST_FILE = "Doctor's Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "djamesjones4.Doctor-s-Note";
@@ -508,7 +588,7 @@
 			baseConfigurationReference = AE59524E11904FE2E1563546 /* Pods-Doctor's Note.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VN3Z42Q39C;
+				DEVELOPMENT_TEAM = P83FA3TCNP;
 				INFOPLIST_FILE = "Doctor's Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "djamesjones4.Doctor-s-Note";

@@ -16,5 +16,16 @@ struct Controllers {
     static let login = "loginViewController"
     static let main = "main"
     static let menu = "menuController"
+    static let singleNote = "singleNote"
 }
 
+struct UserDefaultsKeys {
+    static let token = "session"
+    static let isPractitioner = "isPractitioner"
+    static let id = "id"
+}
+
+struct SegueIdentifiers {
+    static let toNotes = "toNotes"
+    static let toSingleNote = "toSingleNote"
+}
