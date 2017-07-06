@@ -42,6 +42,7 @@ class DataViewController: UIViewController {
         } else {
             // do login stuff here
             doLogin()
+            loginButton.setTitle("Log Out", for: UIControlState.normal)
         }
     }
     

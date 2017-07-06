@@ -66,12 +66,12 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
         // create cell inside this function which will contain the below
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") {
             cell.accessoryType = .disclosureIndicator
-            // TODO: reformat date for note
+            
             let date = model.notes?[indexPath.row]["created_at"] as? String ?? ""
             let noteTitle = model.notes?[indexPath.row]["title"] as? String ?? ""
-            
-            let cellText = date + ": " + noteTitle
-            
+            // reformat date
+            let index = date.index(date.startIndex, offsetBy: 10)
+            let cellText = date.substring(to: index) + ": " + noteTitle
             cell.textLabel?.text = cellText
             print(model.notes?[indexPath.section]["title"] as Any)
             // return UITableViewCell

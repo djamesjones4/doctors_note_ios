@@ -11,11 +11,19 @@ import UIKit
 class NewNoteViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var newNoteTextView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        newNoteTextView.becomeFirstResponder()
+        newNoteTextView.isEditable = true
+        
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        newNoteTextView.becomeFirstResponder()
+        newNoteTextView.isEditable = true
+        
     }
 
     override func didReceiveMemoryWarning() {

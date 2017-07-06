@@ -17,6 +17,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
     fileprivate var model = MainDataModel()
     fileprivate var selectedPersonId: Int = 0
+    
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -33,7 +36,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "free_stethoscope_by_markbartle-d9b3h1z.png")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+        // no lines where there aren't cells
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     fileprivate func setupObservers() {
@@ -60,6 +68,24 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     }
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+    {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "Futura", size: 18)!
+        header.textLabel?.textColor = UIColor.black
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let pract = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isPractitioner)
+        if pract {
+            return "Clients"
+        } else if pract == false {
+            return "Practitioners"
+        } else {
+        return ""
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create cell inside this function which will contain the below
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") {
@@ -81,8 +107,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
-        
-        let isPractitioner = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isPractitioner)
         
         if let id = model.personData?[indexPath.row]["id"] as? Int {
             selectedPersonId = id

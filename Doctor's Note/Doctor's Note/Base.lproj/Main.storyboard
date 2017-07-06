@@ -129,23 +129,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-7g-DCE">
-                                <rect key="frame" x="57" y="28" width="260" height="207"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-7g-DCE">
+                                <rect key="frame" x="57" y="62" width="260" height="207"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vt9-Ma-aMN" id="U78-6l-NGJ"/>
+                                </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUv-va-vRM">
+                                <rect key="frame" x="170" y="299" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SBp-7g-DCE" firstAttribute="top" secondItem="at3-j7-KOz" secondAttribute="bottom" constant="8" id="2QN-sd-lt9"/>
+                            <constraint firstItem="LUv-va-vRM" firstAttribute="centerX" secondItem="Gni-Hc-3lp" secondAttribute="centerX" id="0cW-GJ-FNu"/>
+                            <constraint firstItem="SBp-7g-DCE" firstAttribute="top" secondItem="at3-j7-KOz" secondAttribute="bottom" constant="42" id="7AV-9M-Wse"/>
                             <constraint firstItem="SBp-7g-DCE" firstAttribute="centerX" secondItem="Gni-Hc-3lp" secondAttribute="centerX" id="CHK-Et-7MU"/>
-                            <constraint firstItem="00f-6F-aFb" firstAttribute="top" secondItem="SBp-7g-DCE" secondAttribute="bottom" constant="432" id="YcU-4l-pel"/>
+                            <constraint firstItem="LUv-va-vRM" firstAttribute="top" secondItem="SBp-7g-DCE" secondAttribute="bottom" constant="30" id="YMS-yW-wNc"/>
+                            <constraint firstItem="00f-6F-aFb" firstAttribute="top" secondItem="SBp-7g-DCE" secondAttribute="bottom" constant="398" id="bLG-hM-3tb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="newNoteTextView" destination="SBp-7g-DCE" id="27P-cI-FLA"/>
+                        <outlet property="saveButton" destination="LUv-va-vRM" id="q4i-AX-w6Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWP-Zm-xCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -164,12 +174,9 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PersonDataTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-nG-dJz">
-                                <rect key="frame" x="-0.5" y="20" width="375" height="504"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="PersonDataTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-nG-dJz">
+                                <rect key="frame" x="-1" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="504" id="Fhf-gG-IeC"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="fPP-mE-F7z" style="IBUITableViewCellStyleDefault" id="2Di-nM-maw">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -200,7 +207,7 @@
                         <constraints>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="centerX" secondItem="Jjn-KB-tPk" secondAttribute="centerX" id="1Jl-Q9-RMF"/>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="width" secondItem="Jjn-KB-tPk" secondAttribute="width" id="Map-Pm-tdJ"/>
-                            <constraint firstItem="G4b-nG-dJz" firstAttribute="top" secondItem="33m-ES-PWE" secondAttribute="bottom" constant="20" id="OPY-nI-fsc"/>
+                            <constraint firstItem="G4b-nG-dJz" firstAttribute="height" secondItem="Jjn-KB-tPk" secondAttribute="height" id="ecR-qN-aiN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Doctors Note" id="rFd-ZB-02a">
@@ -225,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCj-gs-VEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2182.5" y="-258.80281690140845"/>
+            <point key="canvasLocation" x="2181.5999999999999" y="-259.52023988005999"/>
         </scene>
         <!--Notes-->
         <scene sceneID="wCl-Yq-3cT">
@@ -270,7 +277,7 @@
                                 <rect key="frame" x="153" y="388" width="68" height="30"/>
                                 <state key="normal" title="New Note"/>
                                 <connections>
-                                    <action selector="newNoteButton:" destination="3iZ-Db-iFb" eventType="touchUpInside" id="vZR-Zg-KU1"/>
+                                    <action selector="newNoteButton:" destination="3iZ-Db-iFb" eventType="touchUpInside" id="PSc-3c-sSj"/>
                                 </connections>
                             </button>
                         </subviews>
