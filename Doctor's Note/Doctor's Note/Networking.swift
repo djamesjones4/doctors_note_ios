@@ -16,12 +16,64 @@ class Networking: NSObject {
     
     class func doAutoLogin() {
         
-        let defaults = UserDefaults.standard
-        if let token = defaults.string(forKey: UserDefaultsKeys.token) {
+        // get individual note data when a practitioner clicks on a client
+        if sessionToken != nil {
             
+            let url = URL(string: networkingURLs.signIn)
+            let session = URLSession.shared
+            let request = NSMutableURLRequest(url: url!)
+            let dictionary = [ "token" : sessionToken!] as [String : Any]
+            print(dictionary)
+            request.httpMethod = "POST"
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+            }
+            catch {
+                print(dictionary)
+                return
+            }
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {
+                (data, response, error) in
+                
+                ActivityManager.activityEnded()
+                guard let _:Data = data else { return }
+                
+                let json:Any?
+                
+                do {
+                    json = try JSONSerialization.jsonObject(with: data!, options: [])
+                }
+                catch {
+                    return
+                }
+                
+                guard let server_response = json as? [NSDictionary] else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    if let response = response as? HTTPURLResponse {
+                        if response.statusCode >= 200 && response.statusCode < 300 {
+                            NotificationCenter.default.post(name: .loginSuccess, object: nil)
+                        } else if response.statusCode >= 400 {
+                            NotificationCenter.default.post(name: .loginFailure, object: nil)
+                        }
+                    }
+                }
+            })
+            
+            ActivityManager.activityBegan()
+            task.resume()
+        } else {
+            // TODO: handle error - need to log in before
+            print("session token is nil")
         }
+        
     }
-    
+
+
     class func doLogin(user: String, pass: String, completion: @escaping (_ data : Data, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
         
         if user.isEmpty || pass.isEmpty {
