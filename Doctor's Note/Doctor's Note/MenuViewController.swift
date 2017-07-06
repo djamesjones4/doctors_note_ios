@@ -10,9 +10,12 @@ import UIKit
 
 class MenuViewController: UIViewController, GuillotineMenu {
 
+    @IBOutlet weak var loginButton: UIButton!
+    
     var titleLabel: UILabel?
     var dismissButton: UIButton?
 
+    private var isLoggedIn: Bool = false
 
     override func viewDidLoad() {
         
@@ -34,6 +37,28 @@ class MenuViewController: UIViewController, GuillotineMenu {
             label.sizeToFit()
             return label
         }()
+        
+        setupLoginButton()
+        setupObservers()
+    }
+    
+    private func setupObservers() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setupLoginButton), name: .loginSuccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setupLoginButton), name: .didLogout, object: nil)
+    }
+    
+    @objc fileprivate func setupLoginButton() {
+        
+        // if token exists, assume we're logged in
+        isLoggedIn = (UserDefaults.standard.object(forKey: UserDefaultsKeys.token) != nil)
+        
+        let title = (isLoggedIn) ? "Log Out" : "Log In"
+        let oldFrame = loginButton.frame
+        loginButton.setTitle(title, for: .normal)
+        let frame = (isLoggedIn) ? CGRect(x: oldFrame.origin.x, y: oldFrame.origin.y, width: 60.0, height: oldFrame.size.height) :
+            CGRect(x: oldFrame.origin.x, y: oldFrame.origin.y, width: 46.0, height: oldFrame.size.height)
+        loginButton.frame = frame
     }
 
     func dismissButtonTapped(_ sender: UIButton) {
@@ -53,15 +78,37 @@ class MenuViewController: UIViewController, GuillotineMenu {
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
-        presentingViewController!.dismiss(animated: true, completion: {
-            DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: Storyboards.main, bundle: nil)
-                let login = storyboard.instantiateViewController(withIdentifier: Controllers.login)
-                
-                let root = UIApplication.shared.keyWindow?.rootViewController
-                root?.present(login, animated: true, completion: nil)
-            }
-        })
+        if isLoggedIn == false {
+            presentingViewController?.dismiss(animated: true, completion: {
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard(name: Storyboards.main, bundle: nil)
+                    let login = storyboard.instantiateViewController(withIdentifier: Controllers.login)
+                    
+                    let root = UIApplication.shared.keyWindow?.rootViewController
+                    root?.present(login, animated: true, completion: nil)
+                }
+            })
+        } else {
+            // delete all stored defaults
+            let defaults = UserDefaults.standard
+            let domain = Bundle.main.bundleIdentifier!
+            defaults.removePersistentDomain(forName: domain)
+            defaults.synchronize()
+            
+            NotificationCenter.default.post(name: .didLogout, object: nil)
+            
+            ActivityManager.activityBegan()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.setupLoginButton()
+                ActivityManager.activityEnded()
+                self.presentingViewController?.dismiss(animated: true, completion: nil)
+            })
+        }
+    }
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

@@ -30,7 +30,7 @@ class MainDataModel {
                     self.personData = data as? [[String : Any]]
                     for dict in self.personData! {
                         let personid = dict["id"]
-                    print("personID: \(personid):", dict)
+                    print("personID: \(String(describing: personid)):", dict)
                         print("person for table: ", self.personData?[0]["firstname"] as? String, self.personData?[0]["lastname"] as? String)
                         self.delegate?.loadDataSucceded()
                     }

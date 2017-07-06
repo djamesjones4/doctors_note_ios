@@ -2,7 +2,7 @@
 //  ActivityManager.swift
 //  Doctor's Note
 //
-//  Created by Ian Jones on 7/6/17.
+//  Created by Derek Jones on 7/6/17.
 //  Copyright © 2017 Derek. All rights reserved.
 //
 

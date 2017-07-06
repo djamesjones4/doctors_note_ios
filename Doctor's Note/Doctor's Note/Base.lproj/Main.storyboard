@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,6 +49,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="G8Q-tc-a1m" id="8kx-ee-N6B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yj3-cK-Dwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,7 +88,10 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="S4R-Ja-viH" id="SVS-Bn-xo8"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KTB-dc-abg">
                                 <rect key="frame" x="117.5" y="204" width="140" height="30"/>
@@ -94,7 +101,10 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="S4R-Ja-viH" id="UWe-si-Aiw"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.61677438019999997" green="0.21051448580000001" blue="0.76725023979999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -177,9 +187,15 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PersonDataTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-nG-dJz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainBgImage" translatesAutoresizingMaskIntoConstraints="NO" id="YN6-bc-wd8">
+                                <rect key="frame" x="0.0" y="114" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YN6-bc-wd8" secondAttribute="height" multiplier="1:1" id="WjJ-4r-Ozm"/>
+                                </constraints>
+                            </imageView>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PersonDataTableView" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-nG-dJz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="fPP-mE-F7z" style="IBUITableViewCellStyleDefault" id="2Di-nM-maw">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -197,7 +213,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" white="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -210,7 +226,10 @@
                         <constraints>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="centerX" secondItem="Jjn-KB-tPk" secondAttribute="centerX" id="1Jl-Q9-RMF"/>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="width" secondItem="Jjn-KB-tPk" secondAttribute="width" id="Map-Pm-tdJ"/>
+                            <constraint firstItem="YN6-bc-wd8" firstAttribute="width" secondItem="Jjn-KB-tPk" secondAttribute="width" id="XW6-aA-tU9"/>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="height" secondItem="Jjn-KB-tPk" secondAttribute="height" id="ecR-qN-aiN"/>
+                            <constraint firstItem="YN6-bc-wd8" firstAttribute="centerY" secondItem="Jjn-KB-tPk" secondAttribute="centerY" id="hQv-ey-ijM"/>
+                            <constraint firstItem="YN6-bc-wd8" firstAttribute="centerX" secondItem="Jjn-KB-tPk" secondAttribute="centerX" id="kMM-07-0ZT"/>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="centerY" secondItem="Jjn-KB-tPk" secondAttribute="centerY" id="sed-LU-2Gj"/>
                         </constraints>
                     </view>
@@ -397,5 +416,6 @@
     </scenes>
     <resources>
         <image name="ic_menu.png" width="16" height="16"/>
+        <image name="mainBgImage" width="240" height="240"/>
     </resources>
 </document>

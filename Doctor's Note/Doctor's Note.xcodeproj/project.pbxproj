@@ -10,6 +10,7 @@
 		3B071177FBEE74B0237A66A6 /* Pods_Doctor_s_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3669ACDA7E40B63ACB64F8 /* Pods_Doctor_s_Note.framework */; };
 		D3931FD91F0E0F8D00FEB537 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3931FD81F0E0F8D00FEB537 /* ActivityView.swift */; };
 		D3931FDD1F0E128700FEB537 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3931FDC1F0E128700FEB537 /* ActivityManager.swift */; };
+		D3931FE01F0E240A00FEB537 /* StartupSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3931FDF1F0E240A00FEB537 /* StartupSequence.swift */; };
 		D3CD2BC71F09F5E90053D7DF /* MainDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD2BC61F09F5E90053D7DF /* MainDataModel.swift */; };
 		DA0D1E9E1F03B53E00EC707B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D1E9D1F03B53E00EC707B /* MenuViewController.swift */; };
 		DA5368581F02F3FE0007EC5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5368571F02F3FE0007EC5D /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 		D0959F50EE728FF8C0698D91 /* Pods_Doctor_s_NoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doctor_s_NoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3931FD81F0E0F8D00FEB537 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		D3931FDC1F0E128700FEB537 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		D3931FDF1F0E240A00FEB537 /* StartupSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupSequence.swift; sourceTree = "<group>"; };
 		D3CD2BC61F09F5E90053D7DF /* MainDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDataModel.swift; sourceTree = "<group>"; };
 		DA0D1E9D1F03B53E00EC707B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		DA5368541F02F3FE0007EC5D /* Doctor's Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Doctor's Note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,8 +49,6 @@
 		DA5368621F02F3FE0007EC5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA5368651F02F3FE0007EC5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA5368671F02F3FE0007EC5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA5368701F02F3FE0007EC5D /* Doctor_s_NoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor_s_NoteTests.swift; sourceTree = "<group>"; };
-		DA5368721F02F3FE0007EC5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA53687B1F037F4B0007EC5D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA53687E1F0382120007EC5D /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		DA5368871F039D950007EC5D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +104,14 @@
 			name = "Activity Indicator";
 			sourceTree = "<group>";
 		};
+		D3931FDE1F0E23F900FEB537 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				D3931FDF1F0E240A00FEB537 /* StartupSequence.swift */,
+			);
+			name = Startup;
+			sourceTree = "<group>";
+		};
 		D3CD2BC51F09F5D20053D7DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				DA5368561F02F3FE0007EC5D /* Doctor's Note */,
-				DA53686F1F02F3FE0007EC5D /* Doctor's NoteTests */,
 				DA5368551F02F3FE0007EC5D /* Products */,
 				6F0D7BA8E90885ADA28BFE74 /* Pods */,
 				8FFBB3583B503D015350AFC7 /* Frameworks */,
@@ -143,6 +150,7 @@
 		DA5368561F02F3FE0007EC5D /* Doctor's Note */ = {
 			isa = PBXGroup;
 			children = (
+				D3931FDE1F0E23F900FEB537 /* Startup */,
 				D3931FDA1F0E11A000FEB537 /* Activity Indicator */,
 				DA8731121F0D459D00605C43 /* NewNote */,
 				DAB955B91F0C42B1000D915C /* SingleNote */,
@@ -160,15 +168,6 @@
 				DA53687B1F037F4B0007EC5D /* Constants.swift */,
 			);
 			path = "Doctor's Note";
-			sourceTree = "<group>";
-		};
-		DA53686F1F02F3FE0007EC5D /* Doctor's NoteTests */ = {
-			isa = PBXGroup;
-			children = (
-				DA5368701F02F3FE0007EC5D /* Doctor_s_NoteTests.swift */,
-				DA5368721F02F3FE0007EC5D /* Info.plist */,
-			);
-			path = "Doctor's NoteTests";
 			sourceTree = "<group>";
 		};
 		DA53687D1F0381B60007EC5D /* Networking */ = {
@@ -488,6 +487,7 @@
 				DAB955C01F0C4894000D915C /* SingleNoteDataModel.swift in Sources */,
 				DAB955BE1F0C478D000D915C /* SingleNoteViewController.swift in Sources */,
 				D3CD2BC71F09F5E90053D7DF /* MainDataModel.swift in Sources */,
+				D3931FE01F0E240A00FEB537 /* StartupSequence.swift in Sources */,
 				DA53687C1F037F4B0007EC5D /* Constants.swift in Sources */,
 				DA0D1E9E1F03B53E00EC707B /* MenuViewController.swift in Sources */,
 				DAC9B22F1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift in Sources */,
@@ -631,7 +631,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "djamesjones4.Doctor-s-Note";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -646,7 +646,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "djamesjones4.Doctor-s-Note";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

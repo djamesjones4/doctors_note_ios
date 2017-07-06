@@ -47,6 +47,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     fileprivate func setupObservers() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: .loginSuccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onLogout), name: .didLogout, object: nil)
         
     }
     
@@ -56,6 +57,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         model.loadData()
         print("loading data")
         
+    }
+    
+    @objc fileprivate func onLogout() {
+        
+        model.personData = nil
+        tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -76,14 +83,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let pract = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isPractitioner)
-        if pract {
-            return "Clients"
-        } else if pract == false {
-            return "Practitioners"
-        } else {
-        return ""
+        
+        if let num: NSNumber = UserDefaults.standard.object(forKey: UserDefaultsKeys.isPractitioner) as? NSNumber {
+            let pract = num.boolValue
+            
+            if pract {
+                return "Clients"
+            } else if pract == false {
+                return "Practitioners"
+            }
         }
+        
+        return ""
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -14,6 +14,14 @@ class Networking: NSObject {
     
     private override init() {}
     
+    class func doAutoLogin() {
+        
+        let defaults = UserDefaults.standard
+        if let token = defaults.string(forKey: UserDefaultsKeys.token) {
+            
+        }
+    }
+    
     class func doLogin(user: String, pass: String, completion: @escaping (_ data : Data, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
         
         if user.isEmpty || pass.isEmpty {
@@ -43,12 +51,10 @@ class Networking: NSObject {
             
             let json:Any?
             
-            do
-            {
+            do {
                 json = try JSONSerialization.jsonObject(with: data!, options: [])
             }
-            catch
-            {
+            catch {
                 return
             }
             

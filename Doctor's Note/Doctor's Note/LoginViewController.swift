@@ -30,6 +30,12 @@ class DataViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        usernameField.becomeFirstResponder()
+    }
+    
     @IBAction func LoginButton(_ sender: Any) {
         
         if isLoggedIn {
@@ -52,7 +58,8 @@ class DataViewController: UIViewController {
         guard let pass = passwordField.text else { return }
         if(uName.isEmpty || pass.isEmpty) { return }
         
-        // TODO: Show a spinner & keep user from touching anything until the request completes.
+        // force whichever field is active to end editing and dismiss the keyboard
+        view.endEditing(true)
         
         Networking.doLogin(user: uName, pass: pass, completion: { data, response, error in
             
@@ -96,6 +103,28 @@ class DataViewController: UIViewController {
                 }
             }
         })
+    }
+}
+
+extension DataViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == passwordField && passwordField.text != nil && usernameField.text != nil {
+            doLogin()
+        } else {
+            if textField == passwordField {
+                if passwordField.text != nil {
+                    usernameField.becomeFirstResponder()
+                }
+            } else {
+                if usernameField.text != nil {
+                    passwordField.becomeFirstResponder()
+                }
+            }
+        }
+        
+        return true
     }
 }
 
