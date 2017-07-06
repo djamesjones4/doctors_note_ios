@@ -18,8 +18,8 @@ class StartupSequence {
     class func autoLogin() {
         
         let defaults = UserDefaults.standard
-        if let token = defaults.string(forKey: UserDefaultsKeys.token) {
-            // TODO: call auto-login on Networking
+        if let _ = defaults.string(forKey: UserDefaultsKeys.token) {
+            Networking.doAutoLogin()
         } else {
             // Delete all UserDefaults
             Networking.logout()
