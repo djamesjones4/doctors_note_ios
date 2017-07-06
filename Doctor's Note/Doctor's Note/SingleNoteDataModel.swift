@@ -9,11 +9,12 @@
 import UIKit
 
 protocol SingleNoteModelDelegate {
-    func notesRetrievalSucceeded()
-    func notesRetrievalFailed(error: NSError?)
+    func noteUpdateSucceeded()
+    func noteUpdateFailed(error: NSError?)
 }
 
 class SingleNoteDataModel {
+    
     var note: [[String : Any]]? = []
     var delegate: SingleNoteModelDelegate? = nil
     
@@ -21,7 +22,7 @@ class SingleNoteDataModel {
         Networking.updateNote(noteId: noteId, noteContent: noteContent, completion: { (data, response, error) in
             if error != nil {
                 // handle error
-                self.delegate?.notesRetrievalFailed(error: error)
+                self.delegate?.noteUpdateFailed(error: error)
             } else {
                 if let data = data {
                     self.note = data as? [[String : Any]]
@@ -31,11 +32,12 @@ class SingleNoteDataModel {
                         }
                     }
                     
-                    self.delegate?.notesRetrievalSucceeded()
+                    self.delegate?.noteUpdateSucceeded()
+                    NotificationCenter.default.post(name: .noteUpdated, object: nil)
                 } else {
                     
                     let err = NSError(domain: "doctorsNoteErrorDomain", code: 404, userInfo: ["message" : "No data"])
-                    self.delegate?.notesRetrievalFailed(error: err)
+                    self.delegate?.noteUpdateFailed(error: err)
                 }
             }
         })

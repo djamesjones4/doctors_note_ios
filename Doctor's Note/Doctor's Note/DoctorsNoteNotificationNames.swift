@@ -14,4 +14,6 @@ extension Notification.Name {
     static let loginSuccess = Notification.Name("loginSuccess")
     static let loginFailure = Notification.Name("loginFailure")
     static let didLogout = Notification.Name("didLogout")
+    static let didAutoLogout = Notification.Name("didAutoLogout")
+    static let noteUpdated = Notification.Name("noteUpdated")
 }

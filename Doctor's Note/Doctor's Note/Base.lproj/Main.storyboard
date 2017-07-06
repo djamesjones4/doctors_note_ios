@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -193,6 +194,12 @@
                                     <constraint firstAttribute="width" secondItem="YN6-bc-wd8" secondAttribute="height" multiplier="1:1" id="WjJ-4r-Ozm"/>
                                 </constraints>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have been automatically logged out." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywJ-eU-O3m">
+                                <rect key="frame" x="16" y="100" width="343" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PersonDataTableView" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-nG-dJz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -225,11 +232,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="centerX" secondItem="Jjn-KB-tPk" secondAttribute="centerX" id="1Jl-Q9-RMF"/>
+                            <constraint firstItem="ywJ-eU-O3m" firstAttribute="centerX" secondItem="Jjn-KB-tPk" secondAttribute="centerX" id="CQq-Px-9RY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ywJ-eU-O3m" secondAttribute="trailing" id="G1M-Jw-GVL"/>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="width" secondItem="Jjn-KB-tPk" secondAttribute="width" id="Map-Pm-tdJ"/>
+                            <constraint firstItem="ywJ-eU-O3m" firstAttribute="top" secondItem="33m-ES-PWE" secondAttribute="bottom" constant="100" id="Q07-5T-CP7"/>
                             <constraint firstItem="YN6-bc-wd8" firstAttribute="width" secondItem="Jjn-KB-tPk" secondAttribute="width" id="XW6-aA-tU9"/>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="height" secondItem="Jjn-KB-tPk" secondAttribute="height" id="ecR-qN-aiN"/>
                             <constraint firstItem="YN6-bc-wd8" firstAttribute="centerY" secondItem="Jjn-KB-tPk" secondAttribute="centerY" id="hQv-ey-ijM"/>
                             <constraint firstItem="YN6-bc-wd8" firstAttribute="centerX" secondItem="Jjn-KB-tPk" secondAttribute="centerX" id="kMM-07-0ZT"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ywJ-eU-O3m" secondAttribute="leading" id="s6a-Ek-lk6"/>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="centerY" secondItem="Jjn-KB-tPk" secondAttribute="centerY" id="sed-LU-2Gj"/>
                         </constraints>
                     </view>
@@ -248,6 +259,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="autoLogoutInfoLabel" destination="ywJ-eU-O3m" id="OeB-ms-N7m"/>
                         <outlet property="barButton" destination="N0q-Cn-RIt" id="cfX-gw-Lxv"/>
                         <outlet property="tableView" destination="G4b-nG-dJz" id="KJA-rU-6hd"/>
                         <segue destination="3iZ-Db-iFb" kind="show" identifier="toNotes" id="QaV-4E-X9R"/>

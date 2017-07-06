@@ -37,6 +37,7 @@ class SingleNoteViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        model.delegate = self
         textView.text = requestedNote?["content"] as? String
         self.title = requestedNote?["title"] as? String
         noteTitleLabel.isHidden = true
@@ -82,6 +83,15 @@ class SingleNoteViewController: UIViewController, UITextViewDelegate {
             editButton.setTitle("Edit", for: .normal)
         }
     }
-    
+}
 
+extension SingleNoteViewController: SingleNoteModelDelegate {
+    
+    func  noteUpdateSucceeded() {
+        // TODO: Handle Success (show alert?)
+    }
+    
+    func noteUpdateFailed(error: NSError?) {
+        // TODO: Handle error
+    }
 }

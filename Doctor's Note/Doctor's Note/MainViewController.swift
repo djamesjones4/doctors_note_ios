@@ -13,6 +13,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var barButton: UIButton!
+    @IBOutlet weak var autoLogoutInfoLabel: UILabel!
     
     fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
     fileprivate var model = MainDataModel()
@@ -48,7 +49,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: .loginSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onLogout), name: .didLogout, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(onLogout), name: .didAutoLogout, object: nil)
     }
     
     @objc fileprivate func loadData(notification: Notification) {
@@ -57,12 +58,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         model.loadData()
         print("loading data")
         
+        autoLogoutInfoLabel.isHidden = true
     }
     
-    @objc fileprivate func onLogout() {
+    @objc fileprivate func onLogout(notification: Notification) {
         
         model.personData = nil
         tableView.reloadData()
+        
+        if notification.name == .didAutoLogout {
+            autoLogoutInfoLabel.isHidden = false
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,7 +95,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if pract {
                 return "Clients"
-            } else if pract == false {
+            } else {
                 return "Practitioners"
             }
         }

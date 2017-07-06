@@ -22,9 +22,7 @@ class StartupSequence {
             // TODO: call auto-login on Networking
         } else {
             // Delete all UserDefaults
-            let domain = Bundle.main.bundleIdentifier!
-            defaults.removePersistentDomain(forName: domain)
-            defaults.synchronize()
+            Networking.logout()
         }
     }
 }

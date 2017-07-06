@@ -30,14 +30,20 @@ class NotesViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         model.delegate = self
+    
+        setupObservers()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func setupObservers() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .noteUpdated, object: nil)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        NotesTableView.reloadData()
+    
+    func reloadData() {
+        
+        if requestedPersonID > 0 {
+        model.getNotes(forId: requestedPersonID)
+        }
     }
 
     @IBAction func newNoteButton(_ sender: Any) {
@@ -46,6 +52,10 @@ class NotesViewController: UIViewController {
             navigationController?.pushViewController(nextView, animated: true)
         }
         
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
  
@@ -84,6 +94,8 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         if let singleNote = model.notes?[indexPath.row] {
             selectedNote = singleNote
             
@@ -111,7 +123,6 @@ extension NotesViewController: NotesModelDelegate {
     
     func notesRetrievalSucceeded() {
      
-        // TODO: Populate the table
         NotesTableView.reloadData()
     }
 }

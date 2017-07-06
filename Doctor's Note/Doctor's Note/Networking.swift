@@ -265,4 +265,16 @@ class Networking: NSObject {
             print("session token is nil")
         }
     }
+    
+    class func logout(isAutoLogout: Bool = false) { // Not actually a network call, but it goes along with the login call
+        
+        // delete all stored defaults
+        let defaults = UserDefaults.standard
+        let domain = Bundle.main.bundleIdentifier!
+        defaults.removePersistentDomain(forName: domain)
+        defaults.synchronize()
+        
+        let notificationName: Notification.Name = (isAutoLogout) ? .didAutoLogout : .didLogout
+        NotificationCenter.default.post(name: notificationName, object: nil)
+    }
 }

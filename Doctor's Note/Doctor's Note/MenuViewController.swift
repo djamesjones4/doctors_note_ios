@@ -33,7 +33,7 @@ class MenuViewController: UIViewController, GuillotineMenu {
             label.numberOfLines = 1;
             label.text = "Doctors Note"
             label.font = UIFont.boldSystemFont(ofSize: 17)
-            label.textColor = UIColor.blue
+            label.textColor = UIColor.black
             label.sizeToFit()
             return label
         }()
@@ -89,13 +89,7 @@ class MenuViewController: UIViewController, GuillotineMenu {
                 }
             })
         } else {
-            // delete all stored defaults
-            let defaults = UserDefaults.standard
-            let domain = Bundle.main.bundleIdentifier!
-            defaults.removePersistentDomain(forName: domain)
-            defaults.synchronize()
-            
-            NotificationCenter.default.post(name: .didLogout, object: nil)
+            Networking.logout()
             
             ActivityManager.activityBegan()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
