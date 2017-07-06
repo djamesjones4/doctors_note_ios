@@ -84,8 +84,7 @@ class MenuViewController: UIViewController, GuillotineMenu {
                     let storyboard = UIStoryboard(name: Storyboards.main, bundle: nil)
                     let login = storyboard.instantiateViewController(withIdentifier: Controllers.login)
                     
-                    let root = UIApplication.shared.keyWindow?.rootViewController
-                    root?.present(login, animated: true, completion: nil)
+                    UIApplication.shared.windows[0].rootViewController?.present(login, animated: true, completion: nil)
                 }
             })
         } else {

@@ -68,7 +68,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if notification.name == .didAutoLogout {
             autoLogoutInfoLabel.isHidden = false
+            
+            // make sure we're on the home screen
             navigationController?.popToRootViewController(animated: false)
+            if let root = UIApplication.shared.windows[0].rootViewController {
+                if let modal = root.presentedViewController {
+                    root.dismiss(animated: false, completion: nil)
+                }
+            }
         }
     }
     
@@ -142,7 +149,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
         presentationAnimator.supportView = navigationController!.navigationBar
         presentationAnimator.presentButton = sender as? UIView
-        present(menuViewController, animated: true, completion: nil)
+        UIApplication.shared.windows[0].rootViewController?.present(menuViewController, animated: true, completion: nil)
     }
     
 
