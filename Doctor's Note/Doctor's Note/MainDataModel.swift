@@ -26,13 +26,15 @@ class MainDataModel {
                 // handle error
                 self.delegate?.loadDataFailed()
             } else {
-                if let data = data {
-                    self.personData = data as? [[String : Any]]
-                    for dict in self.personData! {
-                        let personid = dict["id"]
-                    print("personID: \(String(describing: personid)):", dict)
-                        print("person for table: ", self.personData?[0]["firstname"] as? String, self.personData?[0]["lastname"] as? String)
-                        self.delegate?.loadDataSucceded()
+                if let data = data as? [[String : Any]] {
+                    self.personData = data
+                    if let personData = self.personData {
+                        for dict in personData {
+                            let personid = dict["id"]
+                            print("personID: \(String(describing: personid)):", dict)
+                            print("person for table: ", self.personData?[0]["firstname"] as Any, self.personData?[0]["lastname"] as Any)
+                            self.delegate?.loadDataSucceded()
+                        }
                     }
                 } else {
                     self.delegate?.loadDataFailed()

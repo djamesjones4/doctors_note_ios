@@ -245,13 +245,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Doctors Note" id="rFd-ZB-02a">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="0I1-wv-MK5">
+                        <barButtonItem key="leftBarButtonItem" id="0I1-wv-MK5">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="N0q-Cn-RIt">
                                 <rect key="frame" x="16" y="11" width="16" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ic_menu.png">
-                                    <color key="titleShadowColor" red="0.50196078431372548" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" image="ic_menu.png"/>
                                 <connections>
                                     <action selector="menuButtonTapped:" destination="lbd-CU-7cD" eventType="touchUpInside" id="qIT-mW-KT6"/>
                                 </connections>

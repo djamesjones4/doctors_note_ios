@@ -68,12 +68,12 @@ class MenuViewController: UIViewController, GuillotineMenu {
     
     @IBAction func homeButtonTapped(_ sender: UIButton) {
         
-        presentingViewController!.dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func profileButtonTapped(_ sender: UIButton) {
         
-        presentingViewController!.dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
