@@ -37,7 +37,8 @@ class Networking: NSObject {
         let task = session.dataTask(with: request as URLRequest, completionHandler: {
             (data, response, error) in
             
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            ActivityManager.activityEnded()
+            
             guard let _:Data = data else { return }
             
             let json:Any?
@@ -94,13 +95,15 @@ class Networking: NSObject {
             
         })
         
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        ActivityManager.activityBegan()
         task.resume()
     }
 
     class func loadPersonData(completion: @escaping (_ data : [NSDictionary]?, _ response: HTTPURLResponse, _ error: NSError?) -> ()) {
         // gets clients of practitioner and practitioners of clients
         if sessionToken != nil {
+            
+            ActivityManager.activityEnded()
             
             let url = URL(string: networkingURLs.getPeople)
             let session = URLSession.shared
@@ -121,7 +124,7 @@ class Networking: NSObject {
             let task = session.dataTask(with: request as URLRequest, completionHandler: {
                 (data, response, error) in
                 
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                ActivityManager.activityEnded()
                 guard let _:Data = data else { return }
                 
                 let json:Any?
@@ -144,7 +147,7 @@ class Networking: NSObject {
                 }
             })
             
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            ActivityManager.activityBegan()
             task.resume()
         } else {
             // TODO: handle error - need to log in before
@@ -174,7 +177,7 @@ class Networking: NSObject {
             let task = session.dataTask(with: request as URLRequest, completionHandler: {
                 (data, response, error) in
                 
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                ActivityManager.activityEnded()
                 guard let _:Data = data else { return }
                 
                 let json:Any?
@@ -196,11 +199,12 @@ class Networking: NSObject {
                     }
                 }
             })
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        task.resume()
-    } else {
-    // TODO: handle error - need to log in before
-    print("session token is nil")
+            
+            ActivityManager.activityBegan()
+            task.resume()
+        } else {
+            // TODO: handle error - need to log in before
+            print("session token is nil")
     }
 }
 
@@ -225,7 +229,7 @@ class Networking: NSObject {
             let task = session.dataTask(with: request as URLRequest, completionHandler: {
                 (data, response, error) in
                 
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                ActivityManager.activityEnded()
                 guard let _:Data = data else { return }
                 
                 let json:Any?
@@ -247,7 +251,8 @@ class Networking: NSObject {
                     }
                 }
             })
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
+            ActivityManager.activityBegan()
             task.resume()
         } else {
             // TODO: handle error - need to log in before

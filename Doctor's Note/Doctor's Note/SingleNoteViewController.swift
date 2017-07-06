@@ -19,10 +19,17 @@ class SingleNoteViewController: UIViewController, UITextViewDelegate {
     var requestedNote: [String: Any]? = nil {
         didSet {
             if let _ = viewIfLoaded {
-                noteTitleLabel.text = requestedNote?["title"] as? String
+//                noteTitleLabel.text = requestedNote?["title"] as? String
                 textView.text = requestedNote?["content"] as? String
+                self.title = requestedNote?["title"] as? String
             }
         }
+    }
+    
+    override func awakeFromNib() {
+        
+        let _ = self.view
+        super.awakeFromNib()
     }
     
     override func viewDidLoad() {
@@ -31,7 +38,8 @@ class SingleNoteViewController: UIViewController, UITextViewDelegate {
 
         // Do any additional setup after loading the view.
         textView.text = requestedNote?["content"] as? String
-        noteTitleLabel.text = requestedNote?["title"] as? String
+        self.title = requestedNote?["title"] as? String
+        noteTitleLabel.isHidden = true
         
         let editable = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isPractitioner)
         editButton.isHidden = !editable
@@ -41,10 +49,13 @@ class SingleNoteViewController: UIViewController, UITextViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(true)
-        textView.isEditable = false
+        if let textView = textView {
+            textView.isEditable = false
+        }
     }
     
     @IBAction func editButton(_ sender: Any?) {
+        
         if textView.isEditable == false {
             textView.isEditable = true
             saveButton.isHidden = false
@@ -54,6 +65,9 @@ class SingleNoteViewController: UIViewController, UITextViewDelegate {
         } else {
             textView.isEditable = false
             saveButton.isHidden = true
+            editButton.setTitle("Edit", for: .normal)
+            // reset the text in case it's been edited
+            textView.text = requestedNote?["content"] as? String
         }
     }
     

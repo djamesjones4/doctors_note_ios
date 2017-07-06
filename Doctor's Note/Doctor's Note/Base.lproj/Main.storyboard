@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6nl-pD-mgu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6nl-pD-mgu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -129,9 +129,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-7g-DCE">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-7g-DCE">
                                 <rect key="frame" x="57" y="62" width="260" height="207"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="zBv-aI-ji7"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -160,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWP-Zm-xCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2976.8000000000002" y="429.53523238380814"/>
+            <point key="canvasLocation" x="2978" y="468"/>
         </scene>
         <!--Doctors Note-->
         <scene sceneID="JFN-z9-Gww">
@@ -174,8 +177,8 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="PersonDataTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-nG-dJz">
-                                <rect key="frame" x="-1" y="0.0" width="375" height="623"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PersonDataTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-nG-dJz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="fPP-mE-F7z" style="IBUITableViewCellStyleDefault" id="2Di-nM-maw">
@@ -208,6 +211,7 @@
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="centerX" secondItem="Jjn-KB-tPk" secondAttribute="centerX" id="1Jl-Q9-RMF"/>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="width" secondItem="Jjn-KB-tPk" secondAttribute="width" id="Map-Pm-tdJ"/>
                             <constraint firstItem="G4b-nG-dJz" firstAttribute="height" secondItem="Jjn-KB-tPk" secondAttribute="height" id="ecR-qN-aiN"/>
+                            <constraint firstItem="G4b-nG-dJz" firstAttribute="centerY" secondItem="Jjn-KB-tPk" secondAttribute="centerY" id="sed-LU-2Gj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Doctors Note" id="rFd-ZB-02a">
@@ -246,8 +250,8 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="de3-H0-uqB">
-                                <rect key="frame" x="-1" y="0.0" width="375" height="333"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="de3-H0-uqB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="JI9-UH-4ss" style="IBUITableViewCellStyleDefault" id="XuA-tx-aVt">
@@ -302,76 +306,74 @@
             <point key="canvasLocation" x="2978.4000000000001" y="-259.52023988005999"/>
         </scene>
         <!--Single Note View Controller-->
-        <scene sceneID="NCt-dD-pGY">
+        <scene sceneID="q3a-tf-YGo">
             <objects>
-                <viewController storyboardIdentifier="singleNote" id="7GD-gh-UKH" customClass="SingleNoteViewController" customModule="Doctor_s_Note" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="singleNote" id="xPf-SG-dOe" customClass="SingleNoteViewController" customModule="Doctor_s_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AZS-Fh-krm"/>
-                        <viewControllerLayoutGuide type="bottom" id="XGJ-Tg-tAO"/>
+                        <viewControllerLayoutGuide type="top" id="JR3-Gp-Vec"/>
+                        <viewControllerLayoutGuide type="bottom" id="kTs-Tm-jhD"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gii-wc-J7J">
+                    <view key="view" contentMode="scaleToFill" id="slO-xq-gM7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="do5-Gd-aq8">
-                                <rect key="frame" x="68" y="69" width="240" height="150"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onm-6v-1qM">
+                                <rect key="frame" x="67.5" y="60" width="240" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="iXt-Ic-9ha"/>
-                                    <constraint firstAttribute="height" constant="150" id="kFT-Lt-ZDA"/>
+                                    <constraint firstAttribute="width" constant="240" id="CUy-hc-P42"/>
+                                    <constraint firstAttribute="height" constant="150" id="FYQ-gy-ZJb"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDz-tG-aqE">
-                                <rect key="frame" x="166.5" y="29" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-l8-3xW">
+                                <rect key="frame" x="166.5" y="20" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qb-fe-YYp">
-                                <rect key="frame" x="157.5" y="260" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70d-gp-TNm">
+                                <rect key="frame" x="157.5" y="251" width="60" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="NU2-OC-9Fu"/>
+                                    <constraint firstAttribute="width" constant="60" id="sx0-kh-e5f"/>
                                 </constraints>
                                 <state key="normal" title="Edit"/>
                                 <connections>
-                                    <action selector="editButton:" destination="7GD-gh-UKH" eventType="touchUpInside" id="6p5-oR-eAH"/>
+                                    <action selector="editButton:" destination="xPf-SG-dOe" eventType="touchUpInside" id="iGA-aB-ZvY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nU-mH-PS5">
-                                <rect key="frame" x="171" y="298" width="34" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilk-A2-s9f">
+                                <rect key="frame" x="170.5" y="289" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
-                                    <action selector="saveButton:" destination="7GD-gh-UKH" eventType="touchUpInside" id="dlx-Bn-mK0"/>
+                                    <action selector="saveButton:" destination="xPf-SG-dOe" eventType="touchUpInside" id="k7i-Vt-MPN"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="do5-Gd-aq8" firstAttribute="top" secondItem="aDz-tG-aqE" secondAttribute="bottom" constant="19" id="2w4-4b-zE3"/>
-                            <constraint firstItem="aDz-tG-aqE" firstAttribute="centerX" secondItem="gii-wc-J7J" secondAttribute="centerX" id="Tml-H7-fq6"/>
-                            <constraint firstItem="do5-Gd-aq8" firstAttribute="top" secondItem="AZS-Fh-krm" secondAttribute="bottom" constant="49" id="Zkb-SO-Abh"/>
-                            <constraint firstItem="do5-Gd-aq8" firstAttribute="centerX" secondItem="gii-wc-J7J" secondAttribute="centerX" id="aUq-67-q5o"/>
-                            <constraint firstItem="8nU-mH-PS5" firstAttribute="centerX" secondItem="gii-wc-J7J" secondAttribute="centerX" id="as4-mG-uXc"/>
-                            <constraint firstItem="8nU-mH-PS5" firstAttribute="top" secondItem="2Qb-fe-YYp" secondAttribute="bottom" constant="8" id="h4b-7M-SQO"/>
-                            <constraint firstItem="2Qb-fe-YYp" firstAttribute="centerX" secondItem="gii-wc-J7J" secondAttribute="centerX" id="hHx-ud-qgb"/>
-                            <constraint firstItem="2Qb-fe-YYp" firstAttribute="top" secondItem="do5-Gd-aq8" secondAttribute="bottom" constant="41" id="xbn-aN-wax"/>
+                            <constraint firstItem="Onm-6v-1qM" firstAttribute="top" secondItem="BKt-l8-3xW" secondAttribute="bottom" constant="19" id="9VM-4v-cF8"/>
+                            <constraint firstItem="Ilk-A2-s9f" firstAttribute="centerX" secondItem="slO-xq-gM7" secondAttribute="centerX" id="F6I-Jv-iyJ"/>
+                            <constraint firstItem="Onm-6v-1qM" firstAttribute="top" secondItem="JR3-Gp-Vec" secondAttribute="bottom" constant="40" id="HtI-Nq-lnd"/>
+                            <constraint firstItem="BKt-l8-3xW" firstAttribute="centerX" secondItem="slO-xq-gM7" secondAttribute="centerX" id="Tde-x9-rEN"/>
+                            <constraint firstItem="Ilk-A2-s9f" firstAttribute="top" secondItem="70d-gp-TNm" secondAttribute="bottom" constant="8" id="Ual-FV-ctP"/>
+                            <constraint firstItem="Onm-6v-1qM" firstAttribute="centerX" secondItem="slO-xq-gM7" secondAttribute="centerX" id="ZPK-m2-d8W"/>
+                            <constraint firstItem="70d-gp-TNm" firstAttribute="centerX" secondItem="slO-xq-gM7" secondAttribute="centerX" id="bnE-Zr-I3b"/>
+                            <constraint firstItem="70d-gp-TNm" firstAttribute="top" secondItem="Onm-6v-1qM" secondAttribute="bottom" constant="41" id="ntp-nh-ehB"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="editButton" destination="2Qb-fe-YYp" id="9dz-AI-cZW"/>
-                        <outlet property="noteTitleLabel" destination="aDz-tG-aqE" id="v4u-Kw-0MW"/>
-                        <outlet property="saveButton" destination="8nU-mH-PS5" id="Ugm-k1-yFf"/>
-                        <outlet property="textView" destination="do5-Gd-aq8" id="fbU-mE-hWm"/>
-                        <outlet property="view" destination="2Qb-fe-YYp" id="JWa-hK-QyN"/>
+                        <outlet property="editButton" destination="70d-gp-TNm" id="aak-TL-ojB"/>
+                        <outlet property="noteTitleLabel" destination="BKt-l8-3xW" id="zG5-wC-4ae"/>
+                        <outlet property="saveButton" destination="Ilk-A2-s9f" id="xzJ-V1-Mhn"/>
+                        <outlet property="textView" destination="Onm-6v-1qM" id="0NO-j0-BW6"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I9u-Ui-Cvh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJC-ou-OxP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3767.1999999999998" y="-259.52023988005999"/>
+            <point key="canvasLocation" x="3894" y="-286"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oHZ-6q-0dn">

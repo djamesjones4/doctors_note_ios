@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B071177FBEE74B0237A66A6 /* Pods_Doctor_s_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3669ACDA7E40B63ACB64F8 /* Pods_Doctor_s_Note.framework */; };
+		D3931FD91F0E0F8D00FEB537 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3931FD81F0E0F8D00FEB537 /* ActivityView.swift */; };
+		D3931FDD1F0E128700FEB537 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3931FDC1F0E128700FEB537 /* ActivityManager.swift */; };
 		D3CD2BC71F09F5E90053D7DF /* MainDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD2BC61F09F5E90053D7DF /* MainDataModel.swift */; };
 		DA0D1E9E1F03B53E00EC707B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D1E9D1F03B53E00EC707B /* MenuViewController.swift */; };
 		DA5368581F02F3FE0007EC5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5368571F02F3FE0007EC5D /* AppDelegate.swift */; };
@@ -34,6 +36,8 @@
 		AE59524E11904FE2E1563546 /* Pods-Doctor's Note.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doctor's Note.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doctor's Note/Pods-Doctor's Note.release.xcconfig"; sourceTree = "<group>"; };
 		AF3669ACDA7E40B63ACB64F8 /* Pods_Doctor_s_Note.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doctor_s_Note.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0959F50EE728FF8C0698D91 /* Pods_Doctor_s_NoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doctor_s_NoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3931FD81F0E0F8D00FEB537 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		D3931FDC1F0E128700FEB537 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
 		D3CD2BC61F09F5E90053D7DF /* MainDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDataModel.swift; sourceTree = "<group>"; };
 		DA0D1E9D1F03B53E00EC707B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		DA5368541F02F3FE0007EC5D /* Doctor's Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Doctor's Note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +95,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D3931FDA1F0E11A000FEB537 /* Activity Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				D3931FD81F0E0F8D00FEB537 /* ActivityView.swift */,
+				D3931FDC1F0E128700FEB537 /* ActivityManager.swift */,
+			);
+			name = "Activity Indicator";
+			sourceTree = "<group>";
+		};
 		D3CD2BC51F09F5D20053D7DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +143,7 @@
 		DA5368561F02F3FE0007EC5D /* Doctor's Note */ = {
 			isa = PBXGroup;
 			children = (
+				D3931FDA1F0E11A000FEB537 /* Activity Indicator */,
 				DA8731121F0D459D00605C43 /* NewNote */,
 				DAB955B91F0C42B1000D915C /* SingleNote */,
 				DAB955B11F0AD1BD000D915C /* Notes */,
@@ -470,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3931FD91F0E0F8D00FEB537 /* ActivityView.swift in Sources */,
 				DAB955C01F0C4894000D915C /* SingleNoteDataModel.swift in Sources */,
 				DAB955BE1F0C478D000D915C /* SingleNoteViewController.swift in Sources */,
 				D3CD2BC71F09F5E90053D7DF /* MainDataModel.swift in Sources */,
@@ -477,6 +492,7 @@
 				DA0D1E9E1F03B53E00EC707B /* MenuViewController.swift in Sources */,
 				DAC9B22F1F03B81C0023B3BA /* GuillotineMenuTransitionAnimation.swift in Sources */,
 				DA53687F1F0382120007EC5D /* Networking.swift in Sources */,
+				D3931FDD1F0E128700FEB537 /* ActivityManager.swift in Sources */,
 				DAC9B2331F04C5330023B3BA /* DoctorsNoteNotificationNames.swift in Sources */,
 				DAB955B61F0AD222000D915C /* NotesViewController.swift in Sources */,
 				DA8731191F0D460D00605C43 /* NewNoteViewController.swift in Sources */,
