@@ -72,7 +72,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // make sure we're on the home screen
             navigationController?.popToRootViewController(animated: false)
             if let root = UIApplication.shared.windows[0].rootViewController {
-                if let modal = root.presentedViewController {
+                if let _ = root.presentedViewController {
                     root.dismiss(animated: false, completion: nil)
                 }
             }
@@ -152,8 +152,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         UIApplication.shared.windows[0].rootViewController?.present(menuViewController, animated: true, completion: nil)
     }
     
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -164,10 +162,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // Pass the selected object to the new view controller.
                 nextView.requestedPersonID = selectedPersonId
             }
+            
+            selectedPersonId = 0
         }
     }
-    
-
     
     deinit {
         
