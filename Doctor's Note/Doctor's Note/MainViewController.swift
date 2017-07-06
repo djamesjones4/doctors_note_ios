@@ -19,8 +19,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     fileprivate var model = MainDataModel()
     fileprivate var selectedPersonId: Int = 0
     
-    
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -32,6 +30,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         model.delegate = self
         
         navigationController?.navigationBar.barTintColor = UIColor.orange
+        
+        if Networking.sessionToken != nil {
+            model.loadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

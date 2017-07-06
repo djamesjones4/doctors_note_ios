@@ -17,7 +17,11 @@ class Networking: NSObject {
     class func doAutoLogin() {
         
         // get individual note data when a practitioner clicks on a client
-        if sessionToken != nil {
+        let defaults = UserDefaults.standard
+        
+        if let token = defaults.string(forKey: UserDefaultsKeys.token) {
+            
+            sessionToken = token
             
             let url = URL(string: networkingURLs.signIn)
             let session = URLSession.shared
@@ -49,7 +53,7 @@ class Networking: NSObject {
                     return
                 }
                 
-                guard let server_response = json as? [NSDictionary] else {
+                guard (json as? [NSDictionary]) != nil else {
                     return
                 }
                 
@@ -57,6 +61,7 @@ class Networking: NSObject {
                     if let response = response as? HTTPURLResponse {
                         if response.statusCode >= 200 && response.statusCode < 300 {
                             NotificationCenter.default.post(name: .loginSuccess, object: nil)
+                            print("Auto-login success")
                         } else if response.statusCode >= 400 {
                             NotificationCenter.default.post(name: .loginFailure, object: nil)
                         }
