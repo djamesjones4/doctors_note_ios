@@ -68,6 +68,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if notification.name == .didAutoLogout {
             autoLogoutInfoLabel.isHidden = false
+            navigationController?.popToRootViewController(animated: false)
         }
     }
     
