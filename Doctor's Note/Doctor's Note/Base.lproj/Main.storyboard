@@ -108,7 +108,7 @@
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.61677438019999997" green="0.21051448580000001" blue="0.76725023979999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KTB-dc-abg" firstAttribute="top" secondItem="fXf-Jd-eTc" secondAttribute="bottom" constant="184" id="O4J-GN-js1"/>
                             <constraint firstItem="KTB-dc-abg" firstAttribute="centerX" secondItem="ZwX-cT-FIQ" secondAttribute="centerX" id="TeY-ld-6Di"/>
